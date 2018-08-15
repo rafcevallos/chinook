@@ -90,10 +90,11 @@ GROUP BY InvoiceId
 
 
 -- 12. line_item_track.sql: Provide a query that includes the purchased track name with each invoice line item.
-SELECT Track.Name AS Track
-FROM Track
-LEFT JOIN InvoiceLine ON InvoiceLine.TrackId = InvoiceLine.TrackId
-LEFT JOIN 
+SELECT InvoiceLine.InvoiceLineId, Track.Name AS Track
+FROM InvoiceLine
+JOIN Track on InvoiceLine.TrackId = Track.TrackId
+GROUP BY InvoiceLineId
+
 
 -- 13. line_item_track_artist.sql: Provide a query that includes the purchased track name AND artist name with each invoice line item.
 
